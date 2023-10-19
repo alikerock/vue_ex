@@ -1,13 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+// import { ref } from 'vue'
 
-const count = ref(0)
+// const count = ref(0)
+import { reactive } from 'vue'
 
-console.log(count) // { value: 0 }
-console.log(count.value) // 0
+const state = reactive({ count: 0 })
+console.log(state);
 
-count.value++
-console.log(count.value) // 1
+const increment = () => {
+  state.count++
+}
 
 </script>
 
@@ -15,9 +17,8 @@ console.log(count.value) // 1
 <template>
   <div class="reactivity">
     <h1>This is an Reactivity page</h1>
-    <button @click="count++">+</button>
-
-    <div>{{ count }}</div>
+    <button @click="increment"> + </button>
+    <div>{{ state.count }}</div>
   </div>
 </template>
 
